@@ -1,0 +1,3 @@
+# machine id, key files
+.vagrant/
+.vagrant.d/
