@@ -1,0 +1,53 @@
+version: '2'
+services:
+
+    web:
+
+        build: ./web
+        volumes:
+        - ./web:/usr/src/app
+        depends_on:
+          - redis
+          - postgres
+        expose:
+          - "8000"
+        command: gunicorn webproject.wsgi -b 0.0.0.0:8000
+
+
+    postgres:
+
+        build: ./postgres
+        restart: unless-stopped
+        expose:
+            - "5432"
+        environment:   # will be used by the init script
+            LC_ALL: C.UTF-8
+            POSTGRES_USER: devopspy
+            POSTGRES_PASSWORD: devopspy
+            POSTGRES_DB: devopspy
+        volumes:
+            - pgdata:/var/lib/postgresql/data/  # persist container's db data to local pgdata/ (mounted)
+
+
+    redis:
+        image: sickp/alpine-redis:3.2.2
+        restart: unless-stopped
+        expose:
+            - "6379"
+        volumes:
+            - redisdata:/data
+
+    nginx:
+        restart: always
+        build: ./nginx/
+        ports:
+          - "8000:80"
+        links:
+          - web
+
+volumes:
+  pgdata:
+  redisdata:
+
+
+
