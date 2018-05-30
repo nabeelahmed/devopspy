@@ -12,15 +12,15 @@
 
 
 # # -------------- 2. Function with arguments ---------------
-def add_decorator(original_fn):
-    def decorator_fn(*args, **kwargs):
-        print("Hello from new")
-        original_fn(*args, **kwargs)
-    return decorator_fn
-
-@add_decorator
-def add(x, y):
-    print(x + y)
+# def add_decorator(original_fn):
+#     def decorator_fn(*args, **kwargs):
+#         print("Hello from new")
+#         original_fn(*args, **kwargs)
+#     return decorator_fn
+#
+# @add_decorator
+# def add(x, y):
+#     print(x + y)
 
 
 # # -------------- 3. Decorator with arguments ---------------
