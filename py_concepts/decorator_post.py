@@ -114,10 +114,16 @@ def add(x, y):
 
 
 class A(object):
+    def foo(self, x):
+        print("foo - %s" % x)
+
+    @staticmethod
+    def static_foo(x):
+        print("static foo - %s" % x)
 
 
-if __name__ == "__main__":
-    add(2, 2)
+# if __name__ == "__main__":
+#     add(2, 2)
     # multiply(2, 2)
     # add(2, "i")
 
