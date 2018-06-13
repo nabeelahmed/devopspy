@@ -1,0 +1,10 @@
+*.pyc
+config.py
+.idea/*
+scrapy_practice/.idea/*
+.ipynb_checkpoints
+.ipynb_checkpoints/*
+
+
+
+
